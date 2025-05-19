@@ -3,7 +3,11 @@
  * @param {number} yards
  * @returns {number} the given distance in `yards` converted to meters
  */
-function convertToMeters(yards) {}
+function convertToMeters(yards) {
+    // Convert yards to meters using the conversion factor
+    const meters = yards * 0.9144;
+    return meters;
+}
 
 /**
  * Describes the given distance after converting it from yards to meters.
@@ -17,4 +21,27 @@ function convertToMeters(yards) {}
  * @param {number} yards
  * @returns {string} A description of the given distance.
  */
-function describeDistance(yards) {}
+function describeDistance(yards) {
+    // Convert yards to meters
+    const meters = convertToMeters(yards);
+    // Create a description based on the distance in meters
+    let description = `${yards} yards is ${meters} meters, which is longer than `;
+    
+    if (meters > 1000) {
+        description += "a kilometer!";
+    } else if (meters > 100) {
+        description += "a hectometer!";
+    } else if (meters > 10) {
+        description += "a decameter!";
+    } else {
+        description += "a sandwich!";
+    }
+    
+    return description;
+}
+
+console.log(convertToMeters(100));
+console.log(describeDistance(10));
+console.log(describeDistance(100));
+console.log(describeDistance(1000));
+console.log(describeDistance(10000));
